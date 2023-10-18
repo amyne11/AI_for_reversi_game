@@ -26,10 +26,66 @@ public class AlphaBetaMoveChooser extends MoveChooser {
      * @return  The move chosen by alpha-beta pruning as discussed in the course
      */
     public Move chooseMove(BoardState boardState, Move hint) {
-        // Add alpha-beta pruning code...
-        Move ans= null;
-        return ans;
+    // Initial values of alpha and beta
+    int alpha = Integer.MIN_VALUE;
+    int beta = Integer.MAX_VALUE;
+
+    int bestScore = Integer.MIN_VALUE;
+    Move bestMove = new Move(); // Skip move by default
+    
+    for (Move move : boardState.getLegalMoves()) {
+        BoardState clonedBoard = boardState.deepCopy();
+        clonedBoard.makeLegalMove(move);
+        int currentScore = minimax(clonedBoard, searchDepth - 1, alpha, beta, false);
+        
+        if (currentScore > bestScore) {
+            bestScore = currentScore;
+            bestMove = move;
+        }
+        
+        alpha = Math.max(alpha, bestScore);
+        
+        if (beta <= alpha) {
+            break; // Beta cut-off
+        }
     }
+    return bestMove;
+}
+
+private int minimax(BoardState boardState, int depth, int alpha, int beta, boolean maximizingPlayer) {
+    if (depth == 0 || boardState.gameOver()) {
+        return boardEval(boardState);
+    }
+
+    if (maximizingPlayer) {
+        int maxEval = Integer.MIN_VALUE;
+        for (Move move : boardState.getLegalMoves()) {
+            BoardState clonedBoard = boardState.deepCopy();
+            clonedBoard.makeLegalMove(move);
+            int eval = minimax(clonedBoard, depth - 1, alpha, beta, false);
+            maxEval = Math.max(maxEval, eval);
+            alpha = Math.max(alpha, eval);
+            if (beta <= alpha) {
+                break; // Alpha cut-off
+            }
+        }
+        return maxEval;
+    } else {
+        int minEval = Integer.MAX_VALUE;
+        for (Move move : boardState.getLegalMoves()) {
+            BoardState clonedBoard = boardState.deepCopy();
+            clonedBoard.makeLegalMove(move);
+            int eval = minimax(clonedBoard, depth - 1, alpha, beta, true);
+            minEval = Math.min(minEval, eval);
+            beta = Math.min(beta, eval);
+            if (beta <= alpha) {
+                break; // Beta cut-off
+            }
+        }
+        return minEval;
+    }
+}
+
 
     /**
      * Need to implement boardEval(BoardState)
