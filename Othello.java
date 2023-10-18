@@ -11,7 +11,7 @@ public class Othello {
     // Default player to start game
     public static final int startColour= -1;
     // Default depth of minimax search
-    public static final int searchDepth= 6;
+    public static final int searchDepth= 4;  // Changed to 4 as per your instruction
     // Default seed for random number generation
     public static final long randomSeed= 0l;
 
@@ -29,23 +29,11 @@ public class Othello {
         }
 
         // Choose the two players.
-        // You can experiment with different agents!
-        whiteChooser= new
-            //FirstMoveChooser()
-            RandomMoveChooser(randomSeed)
-            //AlphaBetaMoveChooser(searchDepth)
-            //HumanMoveChooser()
-            ;
-        blackChooser= new
-            //FirstMoveChooser()
-            //RandomMoveChooser(randomSeed)
-            //AlphaBetaMoveChooser(searchDepth)
-            HumanMoveChooser()
-            ;
+        whiteChooser= new AlphaBetaMoveChooser(searchDepth);  // Set AlphaBetaMoveChooser for White
+        blackChooser= new FirstMoveChooser();  // Set FirstMoveChooser for Black
 
         // Run interactive game UI
-        OthelloDisplay othelloDisplay= new
-            OthelloDisplay(initialState,whiteChooser,blackChooser);
+        OthelloDisplay othelloDisplay= new OthelloDisplay(initialState,whiteChooser,blackChooser);
         othelloDisplay.startGame();
     }
 }

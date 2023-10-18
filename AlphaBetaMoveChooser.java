@@ -1,7 +1,7 @@
 /**
  * Solution code for Comp24011 Reversi lab
  *
- * @author USERNAME
+ * @author Y54754AE
  */
 
 public class AlphaBetaMoveChooser extends MoveChooser {
@@ -39,10 +39,38 @@ public class AlphaBetaMoveChooser extends MoveChooser {
      * @return  The value of the board using Norvig's weighting of squares
      */
     public int boardEval(BoardState boardState) {
-        // Add board evaluation code...
-        int ans= -1;
-        return ans;
+    // Define the weight matrix for the board
+    int[][] weights = {
+        {120, -20, 20, 5, 5, 20, -20, 120},
+        {-20, -40, -5, -5, -5, -5, -40, -20},
+        {20, -5, 15, 3, 3, 15, -5, 20},
+        {5, -5, 3, 3, 3, 3, -5, 5},
+        {5, -5, 3, 3, 3, 3, -5, 5},
+        {20, -5, 15, 3, 3, 15, -5, 20},
+        {-20, -40, -5, -5, -5, -5, -40, -20},
+        {120, -20, 20, 5, 5, 20, -20, 120}
+    };
+
+    int score = 0;
+
+    // Iterate through each square on the board
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            // Assuming boardState has a method getSquareValue(i, j)
+            // which returns -1 for black, 1 for white, and 0 for empty.
+            int squareValue = boardState.getContents(i, j);
+            
+            if (squareValue == 1) { // white piece
+                score += weights[i][j];
+            } else if (squareValue == -1) { // black piece
+                score -= weights[i][j];
+            }
+        }
     }
+    
+    return score;
+}
+
 }
 
 /* vim:set et ts=4 sw=4: */
