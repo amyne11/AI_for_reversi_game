@@ -11,7 +11,7 @@ public class Othello {
     // Default player to start game
     public static final int startColour= -1;
     // Default depth of minimax search
-    public static final int searchDepth= 4;  // Changed to 4 as per your instruction
+    public static final int searchDepth= 8;  // Changed to 4 as per your instruction
     // Default seed for random number generation
     public static final long randomSeed= 0l;
 

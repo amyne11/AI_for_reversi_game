@@ -12,7 +12,7 @@ public class AlphaBetaMoveChooser extends MoveChooser {
      */
     public AlphaBetaMoveChooser(int searchDepth) {
         // Add object initialisation code...
-        super("MyAwesomeAgent",searchDepth);
+        super("Amine's agent",searchDepth);
     }
 
     /**
@@ -31,7 +31,7 @@ public class AlphaBetaMoveChooser extends MoveChooser {
     int beta = Integer.MAX_VALUE;
 
     int bestScore = Integer.MIN_VALUE;
-    Move bestMove = new Move(); // Skip move by default
+    Move bestMove = new Move(); 
     
     for (Move move : boardState.getLegalMoves()) {
         BoardState clonedBoard = boardState.deepCopy();
@@ -46,7 +46,7 @@ public class AlphaBetaMoveChooser extends MoveChooser {
         alpha = Math.max(alpha, bestScore);
         
         if (beta <= alpha) {
-            break; // Beta cut-off
+            break; 
         }
     }
     return bestMove;
@@ -66,7 +66,7 @@ private int minimax(BoardState boardState, int depth, int alpha, int beta, boole
             maxEval = Math.max(maxEval, eval);
             alpha = Math.max(alpha, eval);
             if (beta <= alpha) {
-                break; // Alpha cut-off
+                break; 
             }
         }
         return maxEval;
@@ -79,7 +79,7 @@ private int minimax(BoardState boardState, int depth, int alpha, int beta, boole
             minEval = Math.min(minEval, eval);
             beta = Math.min(beta, eval);
             if (beta <= alpha) {
-                break; // Beta cut-off
+                break; 
             }
         }
         return minEval;
@@ -112,8 +112,7 @@ private int minimax(BoardState boardState, int depth, int alpha, int beta, boole
     // Iterate through each square on the board
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            // Assuming boardState has a method getSquareValue(i, j)
-            // which returns -1 for black, 1 for white, and 0 for empty.
+    
             int squareValue = boardState.getContents(i, j);
             
             if (squareValue == 1) { // white piece
