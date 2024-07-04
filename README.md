@@ -11,8 +11,7 @@ Welcome to the Reversi Game project! This project showcases the power of artific
 - [Game Rules](#game-rules)
 - [AI Development](#ai-development)
 - [Testing](#testing)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Introduction
 
