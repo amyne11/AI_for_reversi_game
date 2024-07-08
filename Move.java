@@ -1,11 +1,4 @@
-/**
- * Java code for Comp24011 Reversi lab
- *
- * @author Mbassip2
- * @author a21674fl
- *
- * Copyright 2023; please do not distribute!
- */
+
 
 public class Move {
     // Represents a move as a pair of coordinates x,y in the range 0 to 7.
