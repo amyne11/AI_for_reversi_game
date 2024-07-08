@@ -1,8 +1,4 @@
-/**
- * Solution code for Comp24011 Reversi lab
- *
- * @author Y54754AE
- */
+
 
 public class AlphaBetaMoveChooser extends MoveChooser {
     /**
