@@ -1,11 +1,4 @@
-/**
- * Java code for Comp24011 Reversi lab
- *
- * @author Mbassip2
- * @author a21674fl
- *
- * Copyright 2023; please do not distribute!
- */
+
 
 public final class MoveStats {
     // Timeout for chooseMove() implementation
