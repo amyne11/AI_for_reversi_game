@@ -1,11 +1,4 @@
-/**
- * Java code for Comp24011 Reversi lab
- *
- * @author Mbassip2
- * @author a21674fl
- *
- * Copyright 2023; please do not distribute!
- */
+
 
 public class HumanMoveChooser extends MoveChooser {
     // This agent only has no difficulty levels
